@@ -1,10 +1,10 @@
 import './App.css';
-import API from './Api'
+import StockPlotContainer from './StockPlot/StockPlotContainer'
 
 function App() {
   return (
     <div className="App">
-      <API />
+      <StockPlotContainer />
     </div>
   );
 }
