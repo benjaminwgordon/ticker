@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import StockPlotContainer from './StockPlot/StockPlotContainer'
 
 function App() {

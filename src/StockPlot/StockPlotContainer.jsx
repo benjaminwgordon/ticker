@@ -1,16 +1,23 @@
 import React, {useState, useEffect} from 'react'
 import StockPlot from './StockPlot'
 import StockPlotControls from './StockPlotControls'
-import {getIntraday} from '../AlphaVantage'
+import {getDaily, getIntraday} from '../API'
 
 const StockPlotContainer = () => {
 
-    const [query, setQuery] = useState({ticker:"gme", numObservations: 50})
+    const [query, setQuery] = useState({ticker:"gme", numObservations: 50, timeScale:"intraday"})
     const [queryResult, setQueryResult] = useState("")
     const [errorMessage, setErrorMessage] = useState("")
 
     useEffect( async () => {
-        const timeSeriesData = await getIntraday(query.ticker)
+        const func = () => {
+            switch (query.timeScale){
+                case "intraday": return getIntraday
+                case "daily": return getDaily
+                default: return getIntraday
+            }
+        }
+        const timeSeriesData = await func()(query.ticker, query.numObservations)
         if (!timeSeriesData){
             setErrorMessage("request failed, check request parameters")
         }
@@ -21,9 +28,9 @@ const StockPlotContainer = () => {
     },[query])
 
     return (
-        <div>
+        <div className="stockplot-container">
             {
-                queryResult && <StockPlot rawData={queryResult} numObservations={query.numObservations}/>
+                queryResult && <StockPlot data={queryResult.data} minimum={queryResult.minimum} maximum={queryResult.maximum} numObservations={query.numObservations}/>
             }
             <StockPlotControls setQuery={setQuery}/>
             {
