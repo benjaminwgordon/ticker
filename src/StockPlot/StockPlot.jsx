@@ -2,16 +2,15 @@ import React from 'react'
 import {BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Bar, Cell} from 'recharts'
 
 const StockPlot = (props) => {    
-    const {data, minimum, maximum} = props
+    const {data, minimum, maximum, timeScale} = props
     const yAxisDomain = [(minimum - (maximum - minimum) * 0.2), (maximum + (maximum - minimum) * 0.2)]
     return (
         <div>
             <BarChart width={730} height={250} data={data}  barGap={-8} >
                 <CartesianGrid strokeDasharray="8 8" />
-                <XAxis dataKey="time"/>
+                <XAxis dataKey={timeScale === "1d" ? "time" : "date"}/>
                 <YAxis domain={yAxisDomain} tickFormatter={tick => parseFloat(tick).toPrecision(4)}/>
                 <Tooltip />
-                <Legend />
                 <Bar name="Low - High" dataKey="lowHighSplit" fill="green" barSize={4}>
                     {
                         data.map((entry, index) => {

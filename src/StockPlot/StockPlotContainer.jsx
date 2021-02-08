@@ -6,7 +6,7 @@ import {get5d, getIntraday} from '../API'
 const StockPlotContainer = () => {
 
     const [ticker, setTicker] = useState("gme")
-    const [timeScale, setTimescale] = useState("1d")
+    const [timeScale, setTimescale] = useState("5d")
     const [queryResult, setQueryResult] = useState("")
     const [errorMessage, setErrorMessage] = useState("")
 
