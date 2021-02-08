@@ -1,8 +1,8 @@
 import {getIntraday} from './getIntraday'
-import {getDaily} from './getDaily'
+import {get5d} from './getDaily'
 
 export {
-    getDaily,
+    get5d,
     getIntraday
 }
 

@@ -1,10 +1,12 @@
 import axios from 'axios'
 const key = "984T7K591IF9HT73"
 
-export const getIntraday = async (ticker="gme", numObservations) => {
+export const getIntraday = async (ticker="gme") => {
     let result = await axios.get(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${ticker}&interval=15min&apikey=${key}`)
     const rawData = result.data["Time Series (15min)"]
-
+    if (!rawData){
+        return undefined
+    }
 
     class Observation{
         constructor(date, time, open, high, low, close, volume, openCloseSplit, lowHighSplit){
@@ -24,7 +26,7 @@ export const getIntraday = async (ticker="gme", numObservations) => {
     let maximum = -Infinity  
 
     const data = []
-    for (let key of Object.keys(rawData).slice(0,numObservations)){
+    for (let key of Object.keys(rawData).slice(0,64)){
         const date = key.split(" ")[0].split("-").slice(1).join("/")
         const time = key.split(" ")[1].split(":").slice(0,2).join(":")
         const open = parseFloat(rawData[key]['1. open'])

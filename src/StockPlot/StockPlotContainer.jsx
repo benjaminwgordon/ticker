@@ -1,23 +1,24 @@
 import React, {useState, useEffect} from 'react'
 import StockPlot from './StockPlot'
 import StockPlotControls from './StockPlotControls'
-import {getDaily, getIntraday} from '../API'
+import {get5d, getIntraday} from '../API'
 
 const StockPlotContainer = () => {
 
-    const [query, setQuery] = useState({ticker:"gme", numObservations: 50, timeScale:"intraday"})
+    const [ticker, setTicker] = useState("gme")
+    const [timeScale, setTimescale] = useState("1d")
     const [queryResult, setQueryResult] = useState("")
     const [errorMessage, setErrorMessage] = useState("")
 
     useEffect( async () => {
         const func = () => {
-            switch (query.timeScale){
-                case "intraday": return getIntraday
-                case "daily": return getDaily
+            switch (timeScale){
+                case "1d": return getIntraday
+                case "5d": return get5d
                 default: return getIntraday
             }
         }
-        const timeSeriesData = await func()(query.ticker, query.numObservations)
+        const timeSeriesData = await func()(ticker, timeScale)
         if (!timeSeriesData){
             setErrorMessage("request failed, check request parameters")
         }
@@ -25,14 +26,14 @@ const StockPlotContainer = () => {
             setErrorMessage("")
             setQueryResult(timeSeriesData)
         }        
-    },[query])
+    },[ticker, timeScale])
 
     return (
         <div className="stockplot-container">
             {
-                queryResult && <StockPlot data={queryResult.data} minimum={queryResult.minimum} maximum={queryResult.maximum} numObservations={query.numObservations}/>
+                queryResult && <StockPlot data={queryResult.data} minimum={queryResult.minimum} maximum={queryResult.maximum} />
             }
-            <StockPlotControls setQuery={setQuery}/>
+            <StockPlotControls ticker={ticker} setTicker={setTicker} timeScale={timeScale} setTimescale={setTimescale} />
             {
                 errorMessage && <h5>{errorMessage}</h5>
             }
