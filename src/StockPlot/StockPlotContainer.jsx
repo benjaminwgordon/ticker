@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import StockPlot from './StockPlot'
 import StockPlotControls from './StockPlotControls'
-import {get5d, getIntraday} from '../API'
+import {get5d, getIntraday, get1m, get6m} from '../API'
 
 const StockPlotContainer = () => {
 
@@ -9,12 +9,20 @@ const StockPlotContainer = () => {
     const [timeScale, setTimescale] = useState("5d")
     const [queryResult, setQueryResult] = useState("")
     const [errorMessage, setErrorMessage] = useState("")
+    const [showOpen, setShowOpen] = useState(false)
+    const [showClose, setShowClose] = useState(false)
+    const [showHigh, setShowHigh] = useState(false)
+    const [showLow, setShowLow] = useState(false)
+    const [showBars, setShowBars] = useState(true)
+    
 
     useEffect( async () => {
         const func = () => {
             switch (timeScale){
                 case "1d": return getIntraday
                 case "5d": return get5d
+                case "1m": return get1m
+                case "6m": return get6m
                 default: return getIntraday
             }
         }
@@ -31,9 +39,34 @@ const StockPlotContainer = () => {
     return (
         <div className="stockplot-container">
             {
-                queryResult && <StockPlot data={queryResult.data} minimum={queryResult.minimum} maximum={queryResult.maximum} />
+                queryResult && 
+                <StockPlot 
+                    data={queryResult.data} 
+                    minimum={queryResult.minimum} 
+                    maximum={queryResult.maximum} 
+                    showOpen={showOpen}
+                    showClose={showClose}
+                    showHigh={showHigh}
+                    showLow={showLow}
+                    showBars={showBars}    
+                />
             }
-            <StockPlotControls ticker={ticker} setTicker={setTicker} timeScale={timeScale} setTimescale={setTimescale} />
+            <StockPlotControls 
+                ticker={ticker} 
+                setTicker={setTicker} 
+                timeScale={timeScale} 
+                setTimescale={setTimescale}
+                setShowOpen={setShowOpen}
+                setShowClose={setShowClose}
+                setShowHigh={setShowHigh}
+                setShowLow={setShowLow}
+                setShowBars={setShowBars} 
+                showOpen={showOpen}
+                showClose={showClose}
+                showHigh={showHigh}
+                showLow={showLow}
+                showBars={showBars} 
+            />
             {
                 errorMessage && <h5>{errorMessage}</h5>
             }

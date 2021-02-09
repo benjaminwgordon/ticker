@@ -2,9 +2,8 @@ import axios from 'axios'
 const key = process.env.REACT_APP_ALPHAVANTAGE_API_KEY
 
 class Observation{
-    constructor(date, time, open, high, low, close, volume, openCloseSplit, lowHighSplit){
+    constructor(date, open, high, low, close, volume, openCloseSplit, lowHighSplit){
         this.date = date
-        this.time= time
         this.open = open
         this.high = high
         this.low = low
@@ -15,10 +14,10 @@ class Observation{
     }
 }
 
-export const get5d = async (ticker="gme") => {
-    const query = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${ticker}&interval=60min&apikey=${key}`
+export const get6m = async (ticker="gme") => {
+    const query = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${ticker}&apikey=${key}`
     let result = await axios.get(query)
-    const rawData = result.data["Time Series (60min)"]
+    const rawData = result.data["Time Series (Daily)"]
     if (!rawData){
         return undefined
     }
@@ -33,7 +32,6 @@ export const get5d = async (ticker="gme") => {
         if (i % 2 == 0){
             const key = keys[i]
             const date = key.split(" ")[0].split("-").slice(1).join("/")
-            const time = key.split(" ")[1].split(":").slice(0,2).join(":")        
             const open = parseFloat(rawData[key]['1. open'])
             const high = parseFloat(rawData[key]['2. high'])
             const low = parseFloat(rawData[key]['3. low'])
@@ -41,10 +39,11 @@ export const get5d = async (ticker="gme") => {
             const volume = parseFloat(rawData[key]['5. volume'])
             const openCloseSplit = [open, close]
             const lowHighSplit = [low, high]
-            const observation = new Observation(date,time, open, high, low, close, volume, openCloseSplit, lowHighSplit)
-            data.push(observation)    
+            const observation = new Observation(date, open, high, low, close, volume, openCloseSplit, lowHighSplit)
+            data.push(observation)
 
             // track min and max seen values for graph y axis scaling
+            
             maximum = Math.max(maximum, high)
             minimum = Math.min(minimum, low)
         }

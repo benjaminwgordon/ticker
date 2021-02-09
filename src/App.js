@@ -1,5 +1,6 @@
 import './App.scss';
 import StockPlotContainer from './StockPlot/StockPlotContainer'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
