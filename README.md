@@ -12,7 +12,7 @@
 This project queries the AlphaVantage API for historical stock data and displays it in a visual format using Recharts.
 
 ## Screenshots
-![Example screenshot](./img/screenshot.png)
+![Example screenshot](./ticker.png)
 
 ## Technologies
 * Recharts - ^2.0.4
@@ -23,16 +23,18 @@ This project queries the AlphaVantage API for historical stock data and displays
 To run locally:
 
 Apply for AlphaVantage API key: [AlphaVantage](https://www.alphavantage.co/support/#api-key)
-
 ```
     $ git clone https://github.com/benjaminwgordon/ticker.git
     $ cd ticker
     $ touch .env
 ```
     Open .env with preferred text editor and add line:
-
 ```
 REACT_APP_ALPHAVANTAGE_API_KEY=<YourApiKey>
+```
+    Start project:
+```
+    $ npm start
 ```
 
 ## Features
