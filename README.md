@@ -28,6 +28,7 @@ Apply for AlphaVantage API key: [AlphaVantage](https://www.alphavantage.co/suppo
     Open .env with preferred text editor and add line:
         REACT_APP_ALPHAVANTAGE_API_KEY=<YourApiKey>
     $ npm start
+```
 
 ## Features
 List of features ready and TODOs for future development
