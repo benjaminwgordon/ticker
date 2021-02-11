@@ -20,22 +20,14 @@ This project queries the AlphaVantage API for historical stock data and displays
 * Axios - ^0.21.0
 
 ## Setup
-To run locally:
-
 Apply for AlphaVantage API key: [AlphaVantage](https://www.alphavantage.co/support/#api-key)
 ```
     $ git clone https://github.com/benjaminwgordon/ticker.git
     $ cd ticker
     $ touch .env
-```
     Open .env with preferred text editor and add line:
-```
-REACT_APP_ALPHAVANTAGE_API_KEY=<YourApiKey>
-```
-    Start project:
-```
+        REACT_APP_ALPHAVANTAGE_API_KEY=<YourApiKey>
     $ npm start
-```
 
 ## Features
 List of features ready and TODOs for future development
