@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/benjaminwgordon.github.io/ticker/static/css/main.fe69b699.chunk.css",
+    "main.css": "/benjaminwgordon.github.io/ticker/static/css/main.47561bfe.chunk.css",
     "main.js": "/benjaminwgordon.github.io/ticker/static/js/main.6895ecd2.chunk.js",
     "main.js.map": "/benjaminwgordon.github.io/ticker/static/js/main.6895ecd2.chunk.js.map",
     "runtime-main.js": "/benjaminwgordon.github.io/ticker/static/js/runtime-main.f7e42406.js",
@@ -10,14 +10,14 @@
     "static/js/2.08514b3f.chunk.js.map": "/benjaminwgordon.github.io/ticker/static/js/2.08514b3f.chunk.js.map",
     "index.html": "/benjaminwgordon.github.io/ticker/index.html",
     "static/css/2.150d169a.chunk.css.map": "/benjaminwgordon.github.io/ticker/static/css/2.150d169a.chunk.css.map",
-    "static/css/main.fe69b699.chunk.css.map": "/benjaminwgordon.github.io/ticker/static/css/main.fe69b699.chunk.css.map",
+    "static/css/main.47561bfe.chunk.css.map": "/benjaminwgordon.github.io/ticker/static/css/main.47561bfe.chunk.css.map",
     "static/js/2.08514b3f.chunk.js.LICENSE.txt": "/benjaminwgordon.github.io/ticker/static/js/2.08514b3f.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.f7e42406.js",
     "static/css/2.150d169a.chunk.css",
     "static/js/2.08514b3f.chunk.js",
-    "static/css/main.fe69b699.chunk.css",
+    "static/css/main.47561bfe.chunk.css",
     "static/js/main.6895ecd2.chunk.js"
   ]
 }
