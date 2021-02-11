@@ -10,14 +10,16 @@ const StockPlotControls = (props) => {
         <div className="stockplot-controls">
             <form className="stockplot-control-group ticker" onSubmit={(e)=>{e.preventDefault(); setTicker(localTicker)}}>
                 <label htmlFor="tickerSymbolInput">
-                    Ticker Symbol
+                    Ticker
                 </label>
                 <input 
+                    className="left-cap"
                     type="text" 
                     id="tickerSymbolInput" 
                     value={localTicker} 
                     onChange={(e)=>{setLocalTicker(e.target.value)}}
                 />
+                <input className="button right-cap" type="submit" value="Go"/>
             </form>
             <div className="stockplot-control-group timescale-radio-group">
                 <button className={timeScale === "1d" ? "button-toggle active left-cap" : "button-toggle left-cap"} type="radio" name="timescale" value="1d" id="1d-radio" checked={timeScale === "1d"} onClick={() => setTimescale("1d")}>1d</button>

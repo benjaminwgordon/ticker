@@ -23,18 +23,18 @@ html, .App{
     &.active{
         background-color: #004042;
     }
-    &.left-cap{
-        border-top-left-radius: 1rem;
-        border-bottom-left-radius: 1rem;
-    }
-    &.right-cap{
-        border-top-right-radius: 1rem;
-        border-bottom-right-radius: 1rem;
-    }
     &:not(.left-cap):not(right-cap){
         border-left: 1px solid #00f7ff;
     }
+}
 
+.left-cap{
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+}
+.right-cap{
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
 }
 
 .stockplot-controls{
@@ -51,9 +51,27 @@ html, .App{
 
 .stockplot-control-group{
     margin-left:2rem;
+    flex-wrap:nowrap;
+    display:flex;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.ticker{
+    display:flex;
+    align-items:center;
 }
 
 .ticker input{
-    border-radius: 1rem;
-    border:2px solid #00f7ff;
+    border:none;
+    padding-left:0.5rem;
+}
+
+.button{
+    background-color:#0c9500;
+    color:white;
+}
+
+input:focus{
+    outline:none;
 }

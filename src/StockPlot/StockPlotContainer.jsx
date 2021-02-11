@@ -10,7 +10,7 @@ const StockPlotContainer = () => {
     const [queryResult, setQueryResult] = useState("")
     const [errorMessage, setErrorMessage] = useState("")
     const [showOpen, setShowOpen] = useState(false)
-    const [showClose, setShowClose] = useState(false)
+    const [showClose, setShowClose] = useState(true)
     const [showHigh, setShowHigh] = useState(false)
     const [showLow, setShowLow] = useState(false)
     const [showBars, setShowBars] = useState(true)
