@@ -33,10 +33,10 @@ const StockPlot = (props) => {
                         }
                     </Bar>
                 }
-                {showClose && <Line type="monotone" name="close" dataKey="close" stroke="black" dot={false} />}
-                {showOpen && <Line type="monotone" name="open" dataKey="open" stroke="#2243B6" dot={false} />}
+                {showClose && <Line type="monotone" name="close" dataKey="close" stroke="#ffee00" dot={false} />}
+                {showOpen && <Line type="monotone" name="open" dataKey="open" stroke="#03e6e6" dot={false} />}
                 {showHigh && <Line type="monotone" name="high" dataKey="high" stroke="#FF00CC" dot={false} />}
-                {showLow && <Line type="monotone" name="low" dataKey="low" stroke="#FF6037" dot={false} />}
+                {showLow && <Line type="monotone" name="low" dataKey="low" stroke="#ff9100" dot={false} />}
             </ComposedChart>
         </ResponsiveContainer>
     )

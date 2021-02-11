@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import Form from 'react-bootstrap/Form'
 
 const StockPlotControls = (props) => {
     
@@ -8,8 +7,8 @@ const StockPlotControls = (props) => {
     const [localTicker, setLocalTicker] = useState(ticker)
 
     return (
-        <div>
-            <form onSubmit={(e)=>{e.preventDefault(); setTicker(localTicker)}}>
+        <div className="stockplot-controls">
+            <form className="stockplot-control-group ticker" onSubmit={(e)=>{e.preventDefault(); setTicker(localTicker)}}>
                 <label htmlFor="tickerSymbolInput">
                     Ticker Symbol
                 </label>
@@ -20,37 +19,18 @@ const StockPlotControls = (props) => {
                     onChange={(e)=>{setLocalTicker(e.target.value)}}
                 />
             </form>
-            <div className="timescale-radio-group">
-                <label htmlFor="1d-radio">1d</label>
-                <input className="timescale-radio-button" type="radio" name="timescale" value="1d" id="1d-radio" checked={timeScale === "1d"} onChange={() => setTimescale("1d")}/>
-                <label htmlFor="5d-radio">5d</label>
-                <input className="timescale-radio-button" type="radio" name="timescale" value="5d" id="5d-radio" checked={timeScale === "5d"} onChange={() => setTimescale("5d")}/>
-                <label htmlFor="1m-radio">1m</label>
-                <input className="timescale-radio-button" type="radio" name="timescale" value="1m" id="1m-radio" checked={timeScale === "1m"} onChange={() => setTimescale("1m")}/>
-                <label htmlFor="6m-radio">6m</label>
-                <input className="timescale-radio-button" type="radio" name="timescale" value="6m" id="6m-radio" checked={timeScale === "6m"} onChange={() => setTimescale("6m")}/>
+            <div className="stockplot-control-group timescale-radio-group">
+                <button className={timeScale === "1d" ? "button-toggle active left-cap" : "button-toggle left-cap"} type="radio" name="timescale" value="1d" id="1d-radio" checked={timeScale === "1d"} onClick={() => setTimescale("1d")}>1d</button>
+                <button className={timeScale === "5d" ? "button-toggle active" : "button-toggle"} type="radio" name="timescale" value="5d" id="5d-radio" checked={timeScale === "5d"} onClick={() => setTimescale("5d")}>5d</button>
+                <button className={timeScale === "1m" ? "button-toggle active" : "button-toggle"} type="radio" name="timescale" value="1m" id="1m-radio" checked={timeScale === "1m"} onClick={() => setTimescale("1m")}>1m</button>
+                <button className={timeScale === "6m" ? "button-toggle active right-cap" : "button-toggle right-cap"} type="radio" name="timescale" value="6m" id="6m-radio" checked={timeScale === "6m"} onClick={() => setTimescale("6m")}>6m</button>
             </div>
-            <div className="bar-toggles">
-                <div>
-                    <label htmlFor="showOpenToggleControl">Open</label>
-                    <input type="radio" name="showOpen" id="showOpenToggleControl" checked={showOpen} onClick={()=>setShowOpen(!showOpen)}/>
-                </div>
-                <div>
-                    <label htmlFor="showCloseToggleControl">Close</label>
-                    <input type="radio" name="showClose" id="showCloseToggleControl" checked={showClose} onClick={()=>setShowClose(!showClose)}/>
-                </div>
-                <div>
-                    <label htmlFor="showHighToggleControl">High</label>
-                    <input type="radio" name="showHigh" id="showHighToggleControl" checked={showHigh} onClick={()=>setShowHigh(!showHigh)}/>
-                </div>
-                <div>
-                    <label htmlFor="showLowToggleControl">Low</label>
-                    <input type="radio" name="showLow" id="showLowToggleControl" checked={showLow} onClick={()=>setShowLow(!showLow)}/>
-                </div>
-                <div>
-                    <label htmlFor="showBarsToggleControl">Bars</label>
-                    <input type="radio" name="showBars" id="showBarsToggleControl" checked={showBars} onClick={()=>setShowBars(!showBars)}/>
-                </div>
+            <div className="stockplot-control-group plot-toggles">
+                <button className={showOpen ? "button-toggle active left-cap" : "button-toggle left-cap"} type="radio" name="showOpen" id="showOpenToggleControl" onClick={()=>setShowOpen(!showOpen)}>Open</button>
+                <button className={showClose ? "button-toggle active" : "button-toggle"} type="radio" name="showClose" id="showCloseToggleControl" onClick={()=>setShowClose(!showClose)}>Close</button>
+                <button className={showHigh ? "button-toggle active" : "button-toggle"} type="radio" name="showHigh" id="showHighToggleControl" onClick={()=>setShowHigh(!showHigh)}>High</button>
+                <button className={showLow ? "button-toggle active" : "button-toggle"} type="radio" name="showLow" id="showLowToggleControl" onClick={()=>setShowLow(!showLow)}>Low</button>
+                <button className={showBars ? "button-toggle active right-cap" : "button-toggle right-cap"} type="radio" name="showBars" id="showBarsToggleControl" onClick={()=>setShowBars(!showBars)}>Bars</button>
             </div>
         </div>
     )

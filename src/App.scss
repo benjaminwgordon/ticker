@@ -1,3 +1,7 @@
+html, .App{
+    background-color:rgb(12, 27, 27);
+    color:white;
+}
 .stockplot-container{
     margin-top:8rem;
     display:flex;
@@ -8,5 +12,48 @@
 
 .bar-toggles{
     display:flex;
-    flex-direction:column;
+    flex-direction:row;
+    border-collapse:collapse;
+}
+
+.button-toggle{
+    background-color: #009095;
+    border:none;
+    color:white;
+    &.active{
+        background-color: #004042;
+    }
+    &.left-cap{
+        border-top-left-radius: 1rem;
+        border-bottom-left-radius: 1rem;
+    }
+    &.right-cap{
+        border-top-right-radius: 1rem;
+        border-bottom-right-radius: 1rem;
+    }
+    &:not(.left-cap):not(right-cap){
+        border-left: 1px solid #00f7ff;
+    }
+
+}
+
+.stockplot-controls{
+    font-size: 1.125rem;
+    width:80%;
+    display:flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom:0.5rem;
+    line-height:2rem;
+}
+
+.stockplot-control-group{
+    margin-left:2rem;
+}
+
+.ticker input{
+    border-radius: 1rem;
+    border:2px solid #00f7ff;
 }

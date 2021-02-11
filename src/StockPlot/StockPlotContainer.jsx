@@ -38,19 +38,6 @@ const StockPlotContainer = () => {
 
     return (
         <div className="stockplot-container">
-            {
-                queryResult && 
-                <StockPlot 
-                    data={queryResult.data} 
-                    minimum={queryResult.minimum} 
-                    maximum={queryResult.maximum} 
-                    showOpen={showOpen}
-                    showClose={showClose}
-                    showHigh={showHigh}
-                    showLow={showLow}
-                    showBars={showBars}    
-                />
-            }
             <StockPlotControls 
                 ticker={ticker} 
                 setTicker={setTicker} 
@@ -67,6 +54,20 @@ const StockPlotContainer = () => {
                 showLow={showLow}
                 showBars={showBars} 
             />
+            {
+                queryResult && 
+                <StockPlot 
+                    data={queryResult.data} 
+                    minimum={queryResult.minimum} 
+                    maximum={queryResult.maximum} 
+                    showOpen={showOpen}
+                    showClose={showClose}
+                    showHigh={showHigh}
+                    showLow={showLow}
+                    showBars={showBars}    
+                />
+            }
+
             {
                 errorMessage && <h5>{errorMessage}</h5>
             }
