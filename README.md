@@ -1,7 +1,7 @@
 # React Stock Chart
 > Query historial data for NYSE stocks in a graphical format
 
-# View site live: [ticker](https://benjaminwgordon.github.io/ticker/)
+# View site live: [Ticker](https://benjaminwgordon.github.io/ticker/)
 
 ## Table of contents
 * [General info](#general-info)
